@@ -5,7 +5,7 @@ public class BusinessCard {
 		String surname = "Krzysik";
 		String phone = "123456789";
 		String city = "Krakow";
-		System.out.println();
+		
 		
 		String line1 = "*" + " " + "tel." + name + " " + surname;
 		String line2 = "*" + " " + "adres:" + phone + " " + city;
@@ -22,30 +22,32 @@ public class BusinessCard {
 		//wydłuż szerokość wizytówki o 2 żeby zmieścić dodatkową spację i gwiazdkę
 		cardlength = cardlength + 2;
 
-		int padding1length = cardlength - line1Length;
-		int padding2length = cardlength - line2Length;
+		int padding1length = padding(cardlength, line1Length);
+		int padding2length = padding(cardlength, line2Length);
 
-		//wydrukuj górną ramkę
+		printFrame(cardlength);
+		printLine(line1, padding1length);
+		printLine(line2, padding2length);
+		printFrame(cardlength);
+	}
+
+	private static int padding(int cardlength, int linelength) {
+		return cardlength - linelength;
+	}
+	private static void printFrame(int cardlength) {
+		System.out.println();
+		//wydrukuj ramkę
 		for (int i = 0; i < cardlength; i++) {
 			System.out.print("*");
 		}
+	}
 
+	private static void printLine(String line, int paddinglength) {
 		System.out.println();
-		System.out.print(line1);
-		for (int i = 1; i < padding1length; i++) {
+		System.out.print(line);
+		for (int i = 1; i < paddinglength; i++) {
 			System.out.print(" ");
 		}
 		System.out.print("*");
-		System.out.println();
-		System.out.print(line2);
-		for (int i = 1; i < padding2length; i++) {
-			System.out.print(" ");
-		}
-		System.out.print("*");
-		System.out.println();
-		//wydrukuj dolną ramkę
-		for (int i = 0; i < cardlength; i++) {
-			System.out.print("*");
-		}
 	}
 }
