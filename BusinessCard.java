@@ -1,14 +1,20 @@
+import java.util.Scanner;
+
 public class BusinessCard {
 
 	public static void main(String[] args) {
-		String name = "Anna";
-		String surname = "Krzysik";
-		String phone = "123456789";
-		String city = "Krakow";
+		Scanner wejscieScanner = new Scanner(System.in);
+		System.out.print("Podaj imię: ");
+		String name = wejscieScanner.nextLine();
+		System.out.print("Podaj nazwisko: ");
+		String surname = wejscieScanner.nextLine();
+		System.out.print("Podaj telefon: ");
+		String phone = wejscieScanner.nextLine();
+		System.out.print("Podaj adres: ");
+		String city = wejscieScanner.nextLine();
 		
-		
-		String line1 = "*" + " " + "tel." + name + " " + surname;
-		String line2 = "*" + " " + "adres:" + phone + " " + city;
+		String line1 = "*" + " " + name + " " + surname;
+		String line2 = "*" + " tel. " + phone + " adres: " + city;
 		
 		int line1Length = line1.length();
 		int line2Length = line2.length();
