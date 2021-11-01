@@ -1,9 +1,9 @@
 public class Triangle {
     public static void main(String[] args) {
-        int a = 5;
-        int h = 3;
+        double a = 5;
+        double h = 3;
 
-        double triangle = (double)a*h/2;
+        double triangle = (int)a*(int)h/2;
 
         if (triangle>7) {
             System.out.println("Duzy trojkat");
