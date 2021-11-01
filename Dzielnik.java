@@ -5,7 +5,9 @@ public class Dzielnik {
         int liczba = wczytajLiczbe();
         System.out.println("Wczytano " + liczba);
 
-        znajdzDzielnik(liczba);
+        int[] dzielniki = znajdzDzielnik(liczba);
+
+        drukuj(dzielniki);
     }
 
     private static int wczytajLiczbe() {
@@ -14,21 +16,33 @@ public class Dzielnik {
         return czytnik.nextInt();
     }
 
-    private static void znajdzDzielnik(int liczba) {
-        if (liczba == 0 || liczba == 1) {
-            System.out.println("Dzielnik: " + liczba);
-        } else {
-            System.out.println("Dzielnik: " + liczba);
-            System.out.println("Dzielnik: " + 1);
+    private static int[] znajdzDzielnik(int liczba) {
+        int[] dzielniki = {liczba};
 
-            System.out.println("Sprawdź inne dzielniki");
+        if (liczba > 1) {
+            dzielniki = new int[2];
+            dzielniki[0] = liczba;
+            dzielniki[1] = 1;
+            
             for (int i=2; i <= liczba/2; i++){
                 if (liczba % i == 0) {
-                    System.out.println("Dzielnik: " + i);
+                    int[] noweDzielniki = new int[dzielniki.length + 1];
+                    
+                    System.arraycopy(dzielniki, 0, noweDzielniki, 0, dzielniki.length);
+                    noweDzielniki[noweDzielniki.length - 1] = i;
+                    dzielniki = noweDzielniki;
                 }
-
-
             }
+
+        }
+
+        return dzielniki;
+    }
+
+    private static void drukuj(int[] dzielniki) {
+        System.out.println("Liczba dzielników " + dzielniki.length);
+        for (int i=0; i<dzielniki.length; i++){
+            System.out.println(dzielniki[i]);
         }
     }
 }
